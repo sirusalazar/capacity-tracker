@@ -11,13 +11,13 @@
         color="primary"
         class="team-add_button"
         (click)="addTeam()"
-        [disabled]="!selectedCountry">
+        [disabled]="!selectedCountry || teamService.totalTeamMembers >= 10">
         <mat-icon>add</mat-icon>
       </button>
     </div>
     <div class="team-list">
       <app-team-list-item
-        *ngFor="let item of teamMembers"
+        *ngFor="let item of teamService.team"
         [item]="item"></app-team-list-item>
     </div>
   </mat-card-content>

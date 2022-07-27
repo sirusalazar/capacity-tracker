@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Country, Team } from 'src/app/shared/models';
+import { Component } from '@angular/core';
+import { Country } from 'src/app/shared/models';
+import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-team-card',
@@ -9,7 +10,7 @@ import { Country, Team } from 'src/app/shared/models';
 export class TeamCardComponent {
   public selectedCountry!: Country;
 
-  public teamMembers: Team[] = [];
+  constructor(public teamService: TeamService) {}
 
   /**
    * Method to update selected country from selector component
@@ -23,13 +24,6 @@ export class TeamCardComponent {
    * Method to add new item to team members only if the country isn't already added
    */
   public addTeam(): void {
-    if (
-      !this.teamMembers.find(t => t.country.code === this.selectedCountry.code)
-    ) {
-      this.teamMembers.push({
-        country: this.selectedCountry,
-        members: 1,
-      });
-    }
+    this.teamService.addTeamMembers(this.selectedCountry, 0);
   }
 }
