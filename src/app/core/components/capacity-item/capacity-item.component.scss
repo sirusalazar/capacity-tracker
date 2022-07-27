@@ -1,0 +1,21 @@
+.capacity {
+  &-container {
+    display:flex;
+    margin-bottom: 15px;
+  }
+
+  &-info {
+    width: 300px;
+
+    .info-title {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+  &-time {
+    flex-grow: 1;
+    border: 1px solid;
+    text-align: center;
+  }
+}

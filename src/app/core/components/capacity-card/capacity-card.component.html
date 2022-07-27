@@ -5,7 +5,7 @@
       [title]="'Total Equipo'"
       [members]="teamService.totalTeamMembers"></app-capacity-item>
     <app-capacity-item
-      *ngFor="let item of teamService.team"
+      *ngFor="let item of teamService.teamList$ | async"
       [title]="item.country.name"
       [timezone]="item.country.timezone"
       [members]="item.members"></app-capacity-item>

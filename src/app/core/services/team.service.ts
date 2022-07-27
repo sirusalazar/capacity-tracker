@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Team } from 'src/app/shared/models';
 import { Country } from '../../shared/models/Country';
 
@@ -8,16 +9,7 @@ import { Country } from '../../shared/models/Country';
 export class TeamService {
   private teamMembers: Team[] = [];
   private totalMembers = 0;
-
-  public addTeamMembers(country: Country, members: number): void {
-    if (!this.teamMembers.find(t => t.country.code === country.code)) {
-      this.totalMembers += members;
-      this.teamMembers.push({
-        country,
-        members,
-      });
-    }
-  }
+  public teamList$ = new Subject<Team[]>();
 
   public get team() {
     return this.teamMembers;
@@ -43,5 +35,22 @@ export class TeamService {
     });
 
     this.totalMembers = acumMembers.members;
+    this.teamList$.next(this.teamMembers);
+  }
+
+  /**
+   * Method to include new country and members to the team
+   * @param country
+   * @param members
+   */
+  public addTeamMembers(country: Country, members: number): void {
+    if (!this.teamMembers.find(t => t.country.code === country.code)) {
+      this.totalMembers += members;
+      this.teamMembers.push({
+        country,
+        members,
+      });
+    }
+    this.teamList$.next(this.teamMembers);
   }
 }
