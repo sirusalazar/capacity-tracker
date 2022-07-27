@@ -1,0 +1,24 @@
+<mat-card class="lead">
+  <mat-card-title>Lider</mat-card-title>
+  <mat-card-content>
+    <mat-form-field class="lead-name_input" appearance="fill">
+      <mat-label>Nombre:</mat-label>
+      <input matInput type="text" [(ngModel)]="leadName" />
+      <button
+        *ngIf="leadName"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="leadName = ''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <app-country-selector
+      (countryChanged)="onCountryChanged($event)"></app-country-selector>
+  </mat-card-content>
+  <mat-card-footer class="lead-footer"
+    ><mat-hint
+      >Zona Horaria: <strong>{{ selectedCountry?.timezone }}</strong></mat-hint
+    ></mat-card-footer
+  >
+</mat-card>

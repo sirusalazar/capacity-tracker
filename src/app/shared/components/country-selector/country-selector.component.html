@@ -1,0 +1,8 @@
+<mat-form-field class="country-selector" appearance="fill">
+  <mat-label>Ubicación</mat-label>
+  <mat-select (valueChange)="onCountryChanged($event)">
+    <mat-option *ngFor="let country of countries" [value]="country.code">{{
+      country.name
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>

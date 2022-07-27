@@ -1,0 +1,15 @@
+<mat-card class="list-item">
+  <div class="item-wrapper">
+    <span>
+      {{ item.country.name }}
+    </span>
+    <mat-form-field class="item-input" appearance="outline">
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="item.members"
+        max="10"
+        min="1" />
+    </mat-form-field>
+  </div>
+</mat-card>

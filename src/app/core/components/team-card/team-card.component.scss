@@ -1,0 +1,21 @@
+.team {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  &-form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .country-selector {
+      flex-grow: 1;
+    }
+  }
+
+  &-add_button {
+    height: 52px;
+    margin-left: 15px;
+  }
+}

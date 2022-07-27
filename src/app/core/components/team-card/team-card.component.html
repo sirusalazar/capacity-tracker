@@ -1,0 +1,25 @@
+<mat-card class="team">
+  <mat-card-title>Equipo</mat-card-title>
+  <mat-card-content>
+    <div class="team-form">
+      <app-country-selector
+        class="country-selector"
+        (countryChanged)="onCountryChanged($event)"></app-country-selector>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="team-add_button"
+        (click)="addTeam()"
+        [disabled]="!selectedCountry">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="team-list">
+      <app-team-list-item
+        *ngFor="let item of teamMembers"
+        [item]="item"></app-team-list-item>
+    </div>
+  </mat-card-content>
+  <mat-card-footer class="team-footer"></mat-card-footer>
+</mat-card>

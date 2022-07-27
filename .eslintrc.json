@@ -1,29 +1,25 @@
 {
   "root": true,
-  "ignorePatterns": [
-    "projects/**/*"
-  ],
+  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json",
-          "e2e/tsconfig.json"
-        ],
+        "project": ["**/tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ],
-      "plugins": [
-        "eslint-plugin-react"
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
       "rules": {
+        "@angular-eslint/component-class-suffix": [
+          "error",
+          {
+            "suffixes": ["Page", "Component"]
+          }
+        ],
         "@angular-eslint/component-selector": [
           "error",
           {
@@ -40,52 +36,24 @@
             "style": "camelCase"
           }
         ],
-        "@angular-eslint/no-host-metadata-property": "off",
-        "@typescript-eslint/no-unused-vars": "error",
-        "arrow-parens": [
-          "off",
-          "always"
-        ],
-        "brace-style": [
-          "off",
-          "off"
-        ],
-        "linebreak-style": "off",
-        "max-len": [
-          "error",
-          {
-            "code": 280
-          }
-        ],
-        "new-parens": "off",
-        "newline-per-chained-call": "off",
-        "no-extra-semi": "off",
-        "no-irregular-whitespace": "off",
-        "no-trailing-spaces": "off",
-        "react/jsx-curly-spacing": "off",
-        "react/jsx-equals-spacing": "off",
-        "react/jsx-tag-spacing": [
-          "off",
-          {
-            "afterOpening": "allow",
-            "closingSlash": "allow"
-          }
-        ],
-        "react/jsx-wrap-multilines": "off",
-        "space-in-parens": [
-          "off",
-          "never"
-        ]
+        "@angular-eslint/use-lifecycle-interface": ["error"],
+        "@typescript-eslint/member-ordering": 0,
+        "@typescript-eslint/naming-convention": 0,
+        "prettier/prettier": ["error", { "endOfLine": "auto" }]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", { "parser": "angular" }]
+      }
     }
   ]
 }
